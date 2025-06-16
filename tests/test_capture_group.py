@@ -39,3 +39,21 @@ def test_uppercase_capture_group(load_template_files):
 
     for group in capture_groups:
         assert group.isupper()
+
+
+def test_unused_capture_group(load_template_files):
+    """Identify unused capture groups."""
+    capture_groups = return_template_capture_groups(load_template_files)
+
+    with open(load_template_files, encoding="utf-8") as fh:
+        file = fh.read()
+
+    unused = []
+    for group in capture_groups:
+        usage = re.findall(rf"\${{{group}}}", file, re.MULTILINE)
+
+        if len(usage) < 1:
+            unused.append(group)
+
+    # as long as the `unused` list is empty there are no unused capture groups
+    assert not unused, "There are unused capture groups defined in template"
