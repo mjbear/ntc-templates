@@ -16,6 +16,7 @@ Start
 
 Lag
   ^${LAG_ID}\s+${ADM}\s+${OPR}\s+${WEIGHTED}\s+${THRESHOLD}\s+${UP_COUNT}\s+${MC_ACT_STDBY}(\s|$$) -> Record
+  ^\s+lag-\S+\s*$$
   ^\s*$$
   ^-----------
   ^===========
