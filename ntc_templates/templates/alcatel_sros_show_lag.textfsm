@@ -5,6 +5,7 @@ Value WEIGHTED (Yes|No)
 Value THRESHOLD (\d+)
 Value UP_COUNT (\d+)
 Value MC_ACT_STDBY (N/A|active|standby)
+Value LAG_NAME (lag-\S+)
 
 Start
   ^==+
@@ -15,8 +16,9 @@ Start
   ^. -> Error
 
 Lag
-  ^${LAG_ID}\s+${ADM}\s+${OPR}\s+${WEIGHTED}\s+${THRESHOLD}\s+${UP_COUNT}\s+${MC_ACT_STDBY}(\s|$$) -> Record
-  ^\s+lag-\S+\s*$$
+  ^\d+\s+((up|down)\s+){2} -> Continue.Record
+  ^${LAG_ID}\s+${ADM}\s+${OPR}\s+${WEIGHTED}\s+${THRESHOLD}\s+${UP_COUNT}\s+${MC_ACT_STDBY}(\s|$$)
+  ^\s+${LAG_NAME}\s*$$
   ^\s*$$
   ^-----------
   ^===========
