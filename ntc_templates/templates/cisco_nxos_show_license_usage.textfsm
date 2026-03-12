@@ -1,12 +1,13 @@
 Value FEATURE (\S+)
 Value INSTALLED (Yes|No)
 Value LICENSE_COUNT (\d+|-)
-Value STATUS (Unused|In\s+use)
+Value STATUS (Unused|In\s+use|IN\s+USE)
 Value EXPIRY_DATE (\S+|\s*?)
 Value COMMENTS (.+)
 
 Start
   ^Feature\s+Ins\s+Lic\s+Status\s+Expiry\s+Date\s+Comments -> Begin
+  ^License\s+Authorization: -> Version10
   ^\s*$$
   ^. -> Error
 
@@ -15,4 +16,17 @@ Begin
   ^${FEATURE}\s+${INSTALLED}\s+${LICENSE_COUNT}\s+${STATUS}\s+?${EXPIRY_DATE}\s+${COMMENTS}\s*$$ -> Record
   ^-+\s*$$
   ^\s*$$
+  ^. -> Error
+
+Version10
+  ^\s+Status:\s+${STATUS}$$
+  # overall License Authorization Status
+  ^\s+Status:\s+\S+
+  #
+  ^\(${FEATURE}\):$$
+  ^\s+Description:\s+${COMMENTS}$$
+  ^\s+Count:\s+${LICENSE_COUNT}$$
+  ^\s+Version:
+  ^\s+Enforcement\s+Type:
+  ^\s+License\s+Type: -> Record
   ^. -> Error
