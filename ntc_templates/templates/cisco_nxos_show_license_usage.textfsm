@@ -1,7 +1,7 @@
 Value FEATURE (\S+)
 Value INSTALLED (Yes|No)
 Value LICENSE_COUNT (\d+|-)
-Value STATUS (Unused|In\s+use|IN\s+USE|Not Applicable)
+Value STATUS (Unused|In\s+use|IN\s+USE|Not\s+Applicable)
 Value EXPIRY_DATE (\S+|\s*?)
 Value COMMENTS (.+)
 
