@@ -1,4 +1,4 @@
-Value Filldown PORT_ID ([^=]\S+)
+Value PORT_ID ([^=]\S+)
 Value ADMIN_STATE (Up|Down)
 Value LINK (Yes|No)
 Value PORT_STATE (Up|Down|Ghost|Link Up)
