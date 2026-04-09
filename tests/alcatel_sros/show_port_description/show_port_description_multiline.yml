@@ -16,3 +16,5 @@ parsed_sample:
     port_id: "esat-11/1/c66"
   - description: "100-Gig Ethernet"
     port_id: "esat-11/1/c66/u1"
+  - description: "Port cross-connect"
+    port_id: "pxc-1.a"
