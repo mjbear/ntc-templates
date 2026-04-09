@@ -7,5 +7,7 @@ Start
   ^Port\s+Descriptions\s+on\s\S+\s+\S+\s*$$ 
   ^Port\s+Id\s+Description\s*$$
   ^${PORT_ID}\s+${DESCRIPTION}\s*$$ -> Record
+  ^${PORT_ID}$$
+  ^\s+${DESCRIPTION}$$ -> Record
   ^-+\s*$$
   ^. -> Error
